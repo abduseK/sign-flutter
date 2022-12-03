@@ -1,11 +1,17 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'components/rounded_buttons.dart';
 import 'signUP.dart';
 import 'signIn.dart';
+import 'new_pages/welcome_screen.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+      MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.dark
+      ),
       debugShowCheckedModeBanner: false,
       home: Home(),
     )
@@ -17,51 +23,22 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-    // ignore: prefer_const_constructors
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-              children: const [
-                Icon(Icons.flash_on,
-                  size: 100,
-                  color: Colors.orange,
-                ),
-                Text('Flash Chat',
-                  style: TextStyle(
-                    fontSize: 30
-                  ),
-                )
-              ],
-            ),
-          const SizedBox(height: 5,),
-          RoundedButtons(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SingIn()));
-
-            },
-            title: 'Login',
-            color: Colors.blueAccent,
-          ),
-          RoundedButtons(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
-            },
-            title: 'Register',
-            color: Colors.lightBlueAccent,
-          )
-        ],
-      )
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RoundedButtons(
+              title: 'Welcome Screen',
+              color: Colors.deepPurple,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Welcome_Screen()));
+              },
+            )
+          ]
+        ),
+      ),
+      
     );
   }
-
 }
-
-
-
